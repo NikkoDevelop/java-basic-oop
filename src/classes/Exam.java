@@ -6,8 +6,8 @@ public class Exam extends Letter implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    String examForm;
-    String examDate;
+    private String examForm;
+    private String examDate;
     int totalScoreForAutomaticAssessment;
 
     public Exam(
@@ -28,10 +28,10 @@ public class Exam extends Letter implements Serializable {
 
     public String writeData() {
         return "Экзамен" + "\n" +
-                "Название предмета: " + this.title + "\n" +
-                "Преподаватель: " + this.professorName + "\n" +
-                "Лекционные часы: " + this.lectureHours + "\n" +
-                "Практиические часы: " + this.practiceHours + "\n" +
+                "Название предмета: " + get_title() + "\n" +
+                "Преподаватель: " + get_professorName() + "\n" +
+                "Лекционные часы: " + get_lectureHours() + "\n" +
+                "Практиические часы: " + get_practiceHours() + "\n" +
                 "Форма экзамена: " + this.examForm + "\n" +
                 "Дата экзамена: " + this.examDate + "\n" +
                 "Балл для получения оценки автоматом: " + this.totalScoreForAutomaticAssessment;

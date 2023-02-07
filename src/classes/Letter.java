@@ -2,12 +2,12 @@ package classes;
 
 import java.io.Serializable;
 
-public class Letter implements Serializable {
+abstract public class Letter implements Serializable {
 
-    String title;
-    String professorName;
-    int lectureHours;
-    int practiceHours;
+    private String title;
+    private String professorName;
+    private int lectureHours;
+    private int practiceHours;
 
     public Letter(String title, String professorName, int lectureHours, int practiceHours) {
         this.title = title;
@@ -20,15 +20,15 @@ public class Letter implements Serializable {
         return this.title;
     }
 
-    String get_professorName() {
+    public String get_professorName() {
         return this.professorName;
     }
 
-    int get_lectureHours() {
+    public int get_lectureHours() {
         return this.lectureHours;
     }
 
-    int get_practiceHours() {
+    public int get_practiceHours() {
         return this.practiceHours;
     }
 
