@@ -9,7 +9,7 @@ abstract public class Letter implements Serializable {
     private int lectureHours;
     private int practiceHours;
 
-    public Letter(String title, String professorName, int lectureHours, int practiceHours) {
+    protected Letter(String title, String professorName, int lectureHours, int practiceHours) {
         this.title = title;
         this.professorName = professorName;
         this.lectureHours = lectureHours;
@@ -20,15 +20,15 @@ abstract public class Letter implements Serializable {
         return this.title;
     }
 
-    public String get_professorName() {
+    String get_professorName() {
         return this.professorName;
     }
 
-    public int get_lectureHours() {
+    int get_lectureHours() {
         return this.lectureHours;
     }
 
-    public int get_practiceHours() {
+    int get_practiceHours() {
         return this.practiceHours;
     }
 

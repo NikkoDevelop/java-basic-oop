@@ -25,7 +25,7 @@ public class Main implements Serializable {
         // Проверка на существование csv файла
 
         if(file.exists() && !file.isDirectory()) {
-            log.println(dateFormat.format(new Date()) + ": Переданный файл" + path + "\n");
+            log.println(dateFormat.format(new Date()) + ": Переданный файл - " + path + "\n");
 
             ArrayList<String[]> records = CSVReader.readCSV(file);
 
@@ -33,7 +33,7 @@ public class Main implements Serializable {
 
             // Создание объектов Exam и Test, добавление в массив для сериализации
 
-            int row_count = 0;
+            int rowСount = 0;
 
             Object[] arr = new Object[records.size()];
 
@@ -42,21 +42,21 @@ public class Main implements Serializable {
                 switch (row[0]) {
                     case ("exam") -> {
                         Exam exam = new Exam(row[1], row[2], Integer.parseInt(row[3]), Integer.parseInt(row[4]), row[5], row[6], Integer.parseInt(row[7]));
-                        arr[row_count] = exam;
-                        log.println(dateFormat.format(new Date()) + ": Создание объекта Exam" + "\n" + exam.writeData() + "\n");
+                        arr[rowСount] = exam;
+                        log.println(dateFormat.format(new Date()) + ": Создание объекта Exam " + "\n" + exam.writeData() + "\n");
                     }
                     case ("test") -> {
                         Test test = new Test(row[1], row[2], Integer.parseInt(row[3]), Integer.parseInt(row[4]), row[5], row[6], Integer.parseInt(row[7]));
-                        arr[row_count] = test;
-                        log.println(dateFormat.format(new Date()) + ": Создание объекта Test" + "\n" + test.writeData() + "\n");
+                        arr[rowСount] = test;
+                        log.println(dateFormat.format(new Date()) + ": Создание объекта Test " + "\n" + test.writeData() + "\n");
                     }
                     default -> {
-                        log.println("\n" + dateFormat.format(new Date()) + ": Ошибка создания объекта, переданы неверные данные в строке " + row_count + "\n");
-                        throw new IOException("Error! Data has error in row: " + row_count);
+                        log.println("\n" + dateFormat.format(new Date()) + ": Ошибка создания объекта, переданы неверные данные в строке " + rowСount + "\n");
+                        throw new IOException("Error! Data has error in row: " + rowСount);
                     }
                 }
 
-                row_count += 1;
+                rowСount += 1;
             }
 
             System.out.println("Before Serialization/Deserialization \n");
@@ -105,10 +105,10 @@ public class Main implements Serializable {
             {
                 if (data instanceof Exam) {
                     System.out.println(((Exam) data).writeData());
-                    log.println(dateFormat.format(new Date()) + ": Десериализованный объект Exam" + ((Exam) data).writeData() + "\n");
+                    log.println(dateFormat.format(new Date()) + ": Десериализованный объект Exam " + ((Exam) data).writeData() + "\n");
                 } else if (data instanceof Test) {
                     System.out.println(((Test) data).writeData());
-                    log.println(dateFormat.format(new Date()) + ": Десериализованный объект Test" + ((Test) data).writeData() + "\n");
+                    log.println(dateFormat.format(new Date()) + ": Десериализованный объект Test " + ((Test) data).writeData() + "\n");
                 } else {
                     throw new InvalidClassException("Error! Object class is not defined!");
                 }
